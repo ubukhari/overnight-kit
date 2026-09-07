@@ -1,0 +1,75 @@
+{
+  "name": "overnight-kit",
+  "version": "0.1.1",
+  "description": "Run a sequence of Claude Code prompts against a git repo while you sleep: one commit per prompt, CI polling (Vercel + GitHub Checks), an auto-merge gate you opt into, Discord/Slack notifications, and resume-safe state. Plus a prompt-maker that turns a one-paragraph plan into prompts.json.",
+  "keywords": [
+    "claude-code",
+    "coding-agents",
+    "overnight",
+    "batch",
+    "runner",
+    "prompts",
+    "ci",
+    "autonomous-agents"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "overnight": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "skills",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentwares/overnight-kit"
+  },
+  "homepage": "https://github.com/agentwares/overnight-kit#readme",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "pack:check": "npm pack --dry-run",
+    "pretest": "pnpm run build",
+    "pretypecheck": "pnpm run build",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "zod": "^4.5.4"
+  },
+  "bugs": {
+    "url": "https://github.com/agentwares/overnight-kit/issues"
+  },
+  "packageManager": "pnpm@9.15.9",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.4.1",
+    "eslint": "^10.9.1",
+    "prettier": "^3.9.6",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.69.0",
+    "vitest": "^4.1.11"
+  }
+}

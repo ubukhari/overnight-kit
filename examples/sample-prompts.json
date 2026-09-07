@@ -1,0 +1,45 @@
+{
+  "project_path": "/path/to/your/repo",
+  "branch_name": "overnight/sample-feature",
+  "base_branch": "main",
+  "pr_title": "Sample feature implemented in steps",
+  "pr_body": "Implemented in three sequential Claude Code prompts.\n\n- step 1: scaffolding\n- step 2: tests\n- step 3: docs",
+  "merge_strategy": "none",
+  "wait_for_ci": true,
+  "ci": {
+    "vercel": true,
+    "github_checks": true,
+    "timeout_seconds": 900,
+    "poll_seconds": 10,
+    "skip_grace_seconds": 120,
+    "fix_max_attempts": 3,
+    "strict_timeout": false
+  },
+  "digest": { "url": "https://agentwares-digest.vercel.app/api/ingest" },
+  "prompts": [
+    {
+      "id": "01-scaffold",
+      "label": "Scaffold module",
+      "prompt": "Create a new module foo with an entrypoint and a stub function bar(). Commit when done.",
+      "acceptance": [
+        "src/foo exists with an exported bar()",
+        "`npm test` passes",
+        "Working tree is clean after the commit"
+      ]
+    },
+    {
+      "id": "02-tests",
+      "label": "Add tests",
+      "prompt": "Add unit tests for foo.bar covering the happy path and one edge case. Commit when done.",
+      "depends_on": ["01-scaffold"],
+      "acceptance": ["Tests cover the happy path and one edge case", "`npm test` passes"]
+    },
+    {
+      "id": "03-docs",
+      "label": "Document module",
+      "prompt": "Add a short README section describing foo and example usage. Commit when done.",
+      "depends_on": ["01-scaffold"],
+      "acceptance": ["README has a foo section with a usage example"]
+    }
+  ]
+}
