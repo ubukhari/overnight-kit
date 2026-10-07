@@ -6,7 +6,7 @@ import { installSkill, runInit } from "./init.js";
 import { readEventsJsonl } from "./logs.js";
 import { HaltError, runBatch, type RunMode } from "./runner.js";
 
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 
 const HELP = `overnight ${VERSION} — run a sequence of Claude Code prompts while you sleep.
 

@@ -1,6 +1,6 @@
 {
   "name": "overnight-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Run a sequence of Claude Code prompts against a git repo while you sleep: one commit per prompt, CI polling (Vercel + GitHub Checks), an auto-merge gate you opt into, Discord/Slack notifications, and resume-safe state. Plus a prompt-maker that turns a one-paragraph plan into prompts.json.",
   "keywords": [
     "claude-code",
